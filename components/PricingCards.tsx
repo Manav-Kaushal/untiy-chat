@@ -11,7 +11,7 @@ type Props = {
 const tiers: PricingTier[] = [
   {
     name: "Starter",
-    id: "tier-free",
+    id: null,
     href: "/subscribe",
     priceMonthly: null,
     description: "Get chatting right away with anyone, anywhere!",
@@ -26,7 +26,7 @@ const tiers: PricingTier[] = [
   },
   {
     name: "Pro",
-    id: "tier-pro",
+    id: "pro",
     href: "/subscribe",
     priceMonthly: "₹1",
     description: "Unlock the full potential with Pro!",
@@ -53,7 +53,7 @@ const PricingCards = ({ redirect }: Props) => {
         >
           <div>
             <h3
-              id={tier.id}
+              id={tier.id + tier.name}
               className="text-base font-semibold leading-7 text-indigo-600"
             >
               {tier.name}
@@ -96,13 +96,13 @@ const PricingCards = ({ redirect }: Props) => {
           {redirect ? (
             <Link
               href={tier.href}
-              aria-describedby={tier.id}
+              aria-describedby={tier.id || tier.name}
               className="mt-8 btn"
             >
               Get started today
             </Link>
           ) : (
-            tier.checkout && <CheckoutButton />
+            tier.id && <CheckoutButton />
           )}
         </div>
       ))}

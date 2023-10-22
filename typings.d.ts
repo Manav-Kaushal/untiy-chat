@@ -1,6 +1,6 @@
 export type PricingTier = {
   name: string;
-  id: string;
+  id: string | null;
   href: string;
   priceMonthly: string | number | null;
   description: string;

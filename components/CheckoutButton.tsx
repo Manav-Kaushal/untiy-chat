@@ -7,9 +7,17 @@ import React, { useState } from "react";
 
 //Now import this
 import "firebase/firestore";
+import Spinner from "./Spinner";
+import { useSubscriptionStore } from "@/store/store";
+import ManageAccountButton from "./ManageAccountButton";
 
 const CheckoutButton = () => {
   const { data: session } = useSession();
+  const subscription = useSubscriptionStore((state) => state.subscription);
+
+  const isLoadingSubscription = subscription === undefined;
+  const isSubscribed = subscription?.status === "active";
+
   const [loading, setLoading] = useState<boolean>(false);
 
   const createCheckoutSession = async () => {
@@ -29,7 +37,6 @@ const CheckoutButton = () => {
     // Strip extension will create a checkout session
     return onSnapshot(docRef, (snap) => {
       const data = snap.data();
-      console.log("data -->", data);
       const url = data?.url;
       const error = data?.error;
 
@@ -46,9 +53,15 @@ const CheckoutButton = () => {
   };
 
   return (
-    <button onClick={() => createCheckoutSession()} className="mt-8 btn">
-      {loading ? "Loading..." : "Subscribe"}
-    </button>
+    <div className="mt-8 btn flex-center">
+      {isSubscribed ? (
+        <ManageAccountButton />
+      ) : isLoadingSubscription || loading ? (
+        <Spinner />
+      ) : (
+        <button onClick={() => createCheckoutSession()}>Subscribe</button>
+      )}
+    </div>
   );
 };
 

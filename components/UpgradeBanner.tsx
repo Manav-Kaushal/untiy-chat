@@ -10,7 +10,6 @@ const UpgradeBanner = () => {
   const subscription = useSubscriptionStore((state) => state.subscription);
   const isPro = subscription?.status === "active";
 
-  console.log({ subscription });
 
   if (subscription === undefined || isPro) return null;
 
