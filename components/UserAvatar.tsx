@@ -3,7 +3,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-type Props = { name: string; image: string; className?: string };
+type Props = {
+  name?: string | null;
+  image?: string | null;
+  className?: string;
+};
 
 const UserAvatar = ({ name, image, className }: Props) => {
   return (
@@ -11,7 +15,7 @@ const UserAvatar = ({ name, image, className }: Props) => {
       {image && (
         <Image
           src={image || "https://github.com/shadcn.png"}
-          alt={name}
+          alt={name || "user profile pic"}
           width={40}
           height={40}
           className="rounded-full"
@@ -22,9 +26,9 @@ const UserAvatar = ({ name, image, className }: Props) => {
         className="dark:bg-white dark:text-black text-lg"
       >
         {name
-          .split(" ")
-          .map((n) => n[0])
-          .join("")}
+          ?.split(" ")
+          ?.map((n) => n[0])
+          ?.join("")}
       </AvatarFallback>
     </Avatar>
   );
