@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import DarkModeToggle from "./DarkModeToggle";
+import UserButton from "./UserButton";
 
 type Props = {};
 
@@ -12,11 +13,8 @@ const Header = (props: Props) => {
         <div className="flex-1 flex items-center justify-end space-x-4">
           {/* Language selector */}
           {/* Session && ( ... ) */}
-
-          {/* DarkMode toggle */}
           <DarkModeToggle />
-          
-          {/* User button */}
+          <UserButton />
         </div>
         <div />
       </nav>
