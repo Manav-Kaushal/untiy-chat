@@ -88,3 +88,17 @@ export interface Subscription {
    */
   trial_end: FirebaseFirestore.Timestamp | null;
 }
+
+export type LanguagesSupported =
+  | "en"
+  | "de"
+  | "fr"
+  | "es"
+  | "hi"
+  | "ja"
+  | "la"
+  | "ru"
+  | "zh"
+  | "ar";
+
+

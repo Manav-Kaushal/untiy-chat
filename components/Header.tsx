@@ -7,13 +7,12 @@ import { authOptions } from "@/auth";
 import Link from "next/link";
 import { MessagesSquare } from "lucide-react";
 import CreateChatButton from "./CreateChatButton";
+import UpgradeBanner from "./UpgradeBanner";
 
 type Props = {};
 
 const Header = async (props: Props) => {
   const session = await getServerSession(authOptions);
-
-  console.log("session ->", session);
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-gray-900">
@@ -36,7 +35,7 @@ const Header = async (props: Props) => {
         </div>
         <div />
       </nav>
-      {/* Upgrade banner */}
+      <UpgradeBanner />
     </header>
   );
 };
