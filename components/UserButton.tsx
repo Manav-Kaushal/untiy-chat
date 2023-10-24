@@ -30,7 +30,7 @@ const UserButton = ({ session }: Props) => {
       </Button>
     );
   }
-  
+
   return (
     session && (
       <DropdownMenu>
@@ -52,12 +52,15 @@ const UserButton = ({ session }: Props) => {
                 <p>PRO</p>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="flex-center">
+              <DropdownMenuItem className="cursor-pointer">
                 <ManageAccountButton />
               </DropdownMenuItem>
             </>
           )}
-          <DropdownMenuItem className="flex-center" onClick={() => signOut()}>
+          <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={() => signOut()}
+          >
             Sign Out
           </DropdownMenuItem>
         </DropdownMenuContent>
