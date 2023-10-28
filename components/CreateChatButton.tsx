@@ -44,7 +44,7 @@ const CreateChatButton = ({ isLarge }: Props) => {
       .then(() => {
         toast({
           title: "Success",
-          description: "Your chat has been created... redirecting!",
+          description: "Your chat has been created!",
           className: "bg-green-600 text-white",
           duration: 2000,
         });
