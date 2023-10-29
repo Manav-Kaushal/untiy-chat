@@ -1,4 +1,5 @@
 import { authOptions } from "@/auth";
+import AdminControls from "@/components/Chats/AdminControls";
 import ChatInput from "@/components/Chats/ChatInput";
 import ChatMembersBadges from "@/components/Chats/ChatMembersBadges";
 import ChatMessages from "@/components/Chats/ChatMessages";
@@ -22,7 +23,7 @@ const SingleChatPage = async ({ params: { chatId } }: Props) => {
 
   return (
     <>
-      {/* Admin controls */}
+      <AdminControls chatId={chatId} />
       <ChatMembersBadges chatId={chatId} />
       <div className="flex-1">
         <ChatMessages
