@@ -8,7 +8,7 @@ type Props = {
 
 const AdminControls = ({ chatId }: Props) => {
   return (
-    <div className="flex justify-end space-x-2 m-5 mb-0">
+    <div className="flex justify-end space-x-2">
       <InviteUserButton chatId={chatId} />
       <DeleteChatButton chatId={chatId} />
     </div>
