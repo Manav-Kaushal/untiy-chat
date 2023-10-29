@@ -31,6 +31,7 @@ import { getDocs, serverTimestamp, setDoc } from "firebase/firestore";
 import { addChatRef, chatMembersRef } from "@/lib/converters/ChatMembers";
 import { ToastAction } from "./ui/toast";
 import { getUserByEmailRef } from "@/lib/converters/User";
+import ShareLink from "./Chats/ShareLink";
 
 type Props = { chatId: string };
 
@@ -140,50 +141,58 @@ const InviteUserButton = ({ chatId }: Props) => {
 
   return (
     adminId === session?.user?.id && (
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button>
-            <PlusCircle className="mr-1" />
-            Add User To Chat
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Add User to Chat</DialogTitle>
-            <DialogDescription>
-              Simply enter another user&apos;s email address to invite them to
-              this chat:{" "}
-              <span className="text-indigo-600 font-bold">
-                (Note: they must be registered!)
-              </span>
-            </DialogDescription>
-          </DialogHeader>
+      <>
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogTrigger asChild>
+            <Button>
+              <PlusCircle className="mr-1" />
+              Add User To Chat
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Add User to Chat</DialogTitle>
+              <DialogDescription>
+                Simply enter another user&apos;s email address to invite them to
+                this chat:{" "}
+                <span className="text-indigo-600 font-bold">
+                  (Note: they must be registered!)
+                </span>
+              </DialogDescription>
+            </DialogHeader>
 
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              autoComplete="off"
-              className="flex flex-col space-y-2"
-            >
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="john@doe.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button className="ml-auto sm:w-fit w-full" type="submit">
-                Add To Chat
-              </Button>
-            </form>
-          </Form>
-        </DialogContent>
-      </Dialog>
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                autoComplete="off"
+                className="flex flex-col space-y-2"
+              >
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input placeholder="john@doe.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button className="ml-auto sm:w-fit w-full" type="submit">
+                  Add To Chat
+                </Button>
+              </form>
+            </Form>
+          </DialogContent>
+        </Dialog>
+
+        <ShareLink
+          isOpen={openInviteLink}
+          setIsOpen={setOpenInviteLink}
+          chatId={chatId}
+        />
+      </>
     )
   );
 };
