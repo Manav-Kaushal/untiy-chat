@@ -1,5 +1,6 @@
 import React from "react";
 import InviteUserButton from "../InviteUserButton";
+import DeleteChatButton from "./DeleteChatButton";
 
 type Props = {
   chatId: string;
@@ -7,9 +8,9 @@ type Props = {
 
 const AdminControls = ({ chatId }: Props) => {
   return (
-    <div className="fle justify-end space-x-2 m-5 mb-0">
+    <div className="flex justify-end space-x-2 m-5 mb-0">
       <InviteUserButton chatId={chatId} />
-      {/* <DeleteChatButton /> */}
+      <DeleteChatButton chatId={chatId} />
     </div>
   );
 };
