@@ -53,14 +53,25 @@ const CheckoutButton = () => {
   };
 
   return (
-    <div className="mt-8 btn flex-center">
-      {isSubscribed ? (
-        <ManageAccountButton />
-      ) : isLoadingSubscription || loading ? (
-        <Spinner />
-      ) : (
-        <button onClick={() => createCheckoutSession()}>Subscribe</button>
+    <div className="flex flex-col space-y-2">
+      {isSubscribed && (
+        <>
+          <hr className="mt-5" />
+          <p className="pt-5 text-center text-xs text-indigo-600 font-bold">
+            You are subscribed to PRO
+          </p>
+        </>
       )}
+
+      <div className="mt-8 btn flex-center">
+        {isSubscribed ? (
+          <ManageAccountButton />
+        ) : isLoadingSubscription || loading ? (
+          <Spinner />
+        ) : (
+          <button onClick={() => createCheckoutSession()}>Subscribe</button>
+        )}
+      </div>
     </div>
   );
 };
