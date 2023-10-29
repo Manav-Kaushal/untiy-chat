@@ -1,5 +1,11 @@
 import React from "react";
 import PricingCards from "@/components/PricingCards";
+import { Metadata } from "next";
+import { appConfig } from "@/lib/appConfig";
+
+export const metadata: Metadata = {
+  title: appConfig.name + " | Pricing",
+};
 
 const Pricing = () => {
   return (

@@ -1,8 +1,13 @@
 import { authOptions } from "@/auth";
 import PricingCards from "@/components/PricingCards";
 import { appConfig } from "@/lib/appConfig";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: appConfig.name + " | Subscribe",
+};
 
 const Register = async () => {
   const session = await getServerSession(authOptions);
